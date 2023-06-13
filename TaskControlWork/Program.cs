@@ -8,9 +8,27 @@
 string[] Input()
 {
     Console.WriteLine("Инициализация массива строк");
+    A:
     Console.Write("Введите количество элементов массива (положительное целое число):\t");
     string str = Console.ReadLine();
-    int n = Convert.ToInt32(str);
+    if (int.TryParse(str, out int n) == false || n <= 0)
+    {
+        Console.WriteLine("Введите пожалуйста корректные данные (положительное целое число)");
+        Console.WriteLine("Для продолжения нажмите клавишу Enter");
+        Console.WriteLine("Для выхода из программы нажмите клавишу Escape");
+        if (Console.ReadKey().Key == ConsoleKey.Enter)
+        {
+            goto A;
+        }
+        else if (Console.ReadKey().Key == ConsoleKey.Escape)
+        {
+            Environment.Exit(0);
+        }
+        else
+        {
+            Environment.Exit(0);
+        }
+    }
     string[] array = new string[n];
     Console.WriteLine("Введите слова для заполнеия массива строк");
     for (int i = 0; i < array.Length; i++)
@@ -80,9 +98,7 @@ void Task()
         "Сформирован новый массив из строк, длина которых меньше, либо равна трем символам:";
     if (result.Length == 0)
     {
-        Console.WriteLine(
-            "Заданный массив строк не содержит элементов, длина которых меньше, либо равна трем символам"
-        );
+        Console.WriteLine("Заданный массив строк не содержит элементов, длина которых меньше, либо равна трем символам");
     }
     else
     {
