@@ -37,10 +37,56 @@ void PrintArray(string[] arr, string s)
         Console.Write(arr[i] + " ");
     }
 }
+string[] NewArray(string[] arr, int sim)
+{
+    int count = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i].Length <= sim)
+        {
+            count++;
+        }
+    }
+    if (count == 0)
+    {
+        string[] arr0 = new string[] { };
+        return arr0;
+    }
+    else
+    {
+        string[] arr1 = new string[count];
+        int j = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i].Length <= sim)
+            {
+                arr1[j] = arr[i];
+                j++;
+            }
+        }
+        return arr1;
+    }
+}
 void Task()
 {
+    int simbols = 3;
     string[] array = Input();
     string s = "Создан массив строк и введены следующие элементы:";
     PrintArray(array, s);
+    Console.WriteLine();
+    string[] result = NewArray(array, simbols);
+    Console.WriteLine();
+    string s1 =
+        "Сформирован новый массив из строк, длина которых меньше, либо равна трем символам:";
+    if (result.Length == 0)
+    {
+        Console.WriteLine(
+            "Заданный массив строк не содержит элементов, длина которых меньше, либо равна трем символам"
+        );
+    }
+    else
+    {
+        PrintArray(result, s1);
+    }
 }
 Task();
